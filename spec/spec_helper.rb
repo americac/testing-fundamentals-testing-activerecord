@@ -17,6 +17,11 @@ class CreateSchema < ActiveRecord::Migration
   end
 end
 
+RSpec.configure do |config|
+  config.expect_with :rspec do |c|
+    c.syntax = :should             # disables `expect`
+  end
+end
 CreateSchema.suppress_messages { CreateSchema.migrate(:up) }
 
 I18n.enforce_available_locales = false
